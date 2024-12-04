@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-Description: CardExchangeAuthenticator
+Bundle-SymbolicName: CardExchangeAuthenticator
+Built-By: msalasz
+Bundle-ManifestVersion: 2
+Bnd-LastModified: 1733242538365
+Import-Package: org.apache.axis2.context;version="[1.6,2)",org.apache.
+ synapse;version="[2.1,3)",org.apache.synapse.commons.json;version="[2
+ .1,3)",org.apache.synapse.config.xml;version="[2.1,3)",org.apache.syn
+ apse.core.axis2;version="[2.1,3)",org.apache.synapse.mediators;versio
+ n="[2.1,3)",org.apache.synapse.util.xpath;version="[2.1,3)",org.bounc
+ ycastle.crypto;version="[1.77,2)",org.bouncycastle.crypto.digests;ver
+ sion="[1.77,2)",org.bouncycastle.crypto.macs;version="[1.77,2)",org.b
+ ouncycastle.crypto.params;version="[1.77,2)",org.bouncycastle.util.en
+ coders;version="[1.77,2)",org.jaxen
+DynamicImport-Package: *
+Tool: Bnd-1.15.0
+Bundle-Version: 1.5.4
+Bundle-Name: CardExchangeAuthenticator
+Created-By: Apache Maven Bundle Plugin
+Build-Jdk: 1.8.0_401
+

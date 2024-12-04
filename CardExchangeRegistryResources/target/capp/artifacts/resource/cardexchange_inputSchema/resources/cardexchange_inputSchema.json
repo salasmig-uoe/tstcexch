@@ -1,0 +1,60 @@
+{
+  "$schema":"http://wso2.org/json-schema/wso2-data-mapper-v5.0.0/schema#",
+  "id":"http://wso2jsonschema.org",
+  "inputType" : "JSONSCHEMA",
+  "title" : "CardExchangePerson",
+  "type" : "object",
+  "properties" : {
+    "Person" : {
+      "id" : "http://jsonschema.net/person",
+      "type" : "object",
+      "properties" : {
+        "PersonNumber" : {
+          "id" : "http://jsonschema.net/Person/PersonNumber",
+          "type" : "string"
+        },
+        "Photo" : {
+          "id" : "http://jsonschema.net/Person/Photo",
+          "type" : "string"
+        },
+        "Cardholders" : {
+          "id" : "http://jsonschema.net/Person/Cardholders",
+          "type" : "array",
+          "items" : [ {
+            "type" : "object",
+            "properties" : {
+              "Cards" : {
+                "id" : "http://jsonschema.net/Person/Cardholders/0/Cards",
+                "type" : "array",
+                "items" : [ {
+                  "type" : "object",
+                  "required" : [ "Status" ],
+                  "properties" : {
+                    "Status" : {
+                      "id" : "http://jsonschema.net/Person/Cardholders/0/Cards/0/Status",
+                      "type" : "integer"
+                    },
+                    "CardNumber" : {
+                      "id" : "http://jsonschema.net/Person/Cardholders/0/Cards/0/CardNumber",
+                      "type" : "string"
+                    },
+                    "ChipserialNumber" : {
+                      "id" : "http://jsonschema.net/Person/Cardholders/0/Cards/0/ChipserialNumber",
+                      "type" : "string"
+                    },
+                    "PacsCardNumber" : {
+                      "id" : "http://jsonschema.net/Person/Cardholders/0/Cards/0/PacsCardNumber",
+                      "type" : "string"
+                    }
+                  }
+                } ]
+              }
+            }
+          } ]
+        }
+      },
+      "required" : [ "PersonNumber" ]
+    }
+  },
+  "required" : [ "Person" ]
+}

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="CardExchange_API" groupId="uk.ac.ed.card.wso2.api" version="1.5.4" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/CardExchange_API.xml</file>
+    </artifact>
+    <artifact name="CardExchange_API_swagger" groupId="uk.ac.ed.card.wso2.metadata" version="1.5.4" type="synapse/metadata" serverRole="EnterpriseServiceBus">
+        <file>src/main/resources/metadata/CardExchange_API_swagger.yaml</file>
+    </artifact>
+    <artifact name="CardExchange_API_metadata" groupId="uk.ac.ed.card.wso2.metadata" version="1.5.4" type="synapse/metadata" serverRole="EnterpriseServiceBus">
+        <file>src/main/resources/metadata/CardExchange_API_metadata.yaml</file>
+    </artifact>
+    <artifact name="CardExchange_Inbound_Sequence" groupId="uk.ac.ed.card.wso2.sequence" version="1.5.4" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/CardExchange_Inbound_Sequence.xml</file>
+    </artifact>
+    <artifact name="CardExchange_DefaultReply_Sequence" groupId="uk.ac.ed.card.wso2.sequence" version="1.5.4" type="synapse/sequence" serverRole="EnterpriseServiceBus"> 
+        <file>src/main/synapse-config/sequences/CardExchange_DefaultReply_Sequence.xml</file> 
+    </artifact>	 
+    <artifact name="CardExchange_DefaultFault_Sequence" groupId="uk.ac.ed.card.wso2.sequence" version="1.5.4" type="synapse/sequence" serverRole="EnterpriseServiceBus"> 
+        <file>src/main/synapse-config/sequences/CardExchange_DefaultFault_Sequence.xml</file> 
+    </artifact>
+    <artifact name="card_cardexchange_cardapi_mq" groupId="uk.ac.ed.card.wso2.message-store" version="1.5.4" type="synapse/message-store" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-stores/card_cardexchange_cardapi_mq.xml</file>
+    </artifact>
+    <artifact name="card_cardexchange_cardapi_mq_error" groupId="uk.ac.ed.card.wso2.message-store" version="1.5.4" type="synapse/message-store" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-stores/card_cardexchange_cardapi_mq_error.xml</file>
+    </artifact>
+    <artifact name="card_cardexchange_cardapi_mq_retry" groupId="uk.ac.ed.card.wso2.message-store" version="1.5.4" type="synapse/message-store" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-stores/card_cardexchange_cardapi_mq_retry.xml</file>
+    </artifact>
+    <artifact name="card_cardexchange_idmwrite_mq" groupId="uk.ac.ed.card.wso2.message-store" version="1.5.4" type="synapse/message-store" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-stores/card_cardexchange_idmwrite_mq.xml</file>
+    </artifact>
+    <artifact name="card_cardexchange_idmwrite_mq_error" groupId="uk.ac.ed.card.wso2.message-store" version="1.5.4" type="synapse/message-store" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-stores/card_cardexchange_idmwrite_mq_error.xml</file>
+    </artifact>
+    <artifact name="card_cardexchange_idmwrite_mq_retry" groupId="uk.ac.ed.card.wso2.message-store" version="1.5.4" type="synapse/message-store" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-stores/card_cardexchange_idmwrite_mq_retry.xml</file>
+    </artifact>
+    <artifact name="CardExchange_CardAPI_Endpoint" groupId="uk.ac.ed.card.wso2.endpoint" version="1.5.4" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/CardExchange_CardAPI_Endpoint.xml</file>
+    </artifact>
+    <artifact name="CardExchange_IDMWrite_Endpoint" groupId="uk.ac.ed.card.wso2.endpoint" version="1.5.4" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/CardExchange_IDMWrite_Endpoint.xml</file>
+    </artifact>
+    <artifact name="card_cardexchange_cardapi_proxy_ep" groupId="uk.ac.ed.card.wso2.endpoint" version="1.5.4" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/card_cardexchange_cardapi_proxy_ep.xml</file>
+    </artifact>
+    <artifact name="card_cardexchange_idmwrite_proxy_ep" groupId="uk.ac.ed.card.wso2.endpoint" version="1.5.4" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/card_cardexchange_idmwrite_proxy_ep.xml</file>
+    </artifact>
+    <artifact name="CardExchange_CardAPI_MessageProcessor" groupId="uk.ac.ed.card.wso2.message-processors" version="1.5.4" type="synapse/message-processors" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-processors/CardExchange_CardAPI_MessageProcessor.xml</file>
+    </artifact>
+    <artifact name="CardExchange_IDMWrite_MessageProcessor" groupId="uk.ac.ed.card.wso2.message-processors" version="1.5.4" type="synapse/message-processors" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-processors/CardExchange_IDMWrite_MessageProcessor.xml</file>
+    </artifact>
+    <artifact name="CardExchange_OAuth2_SequenceTemplate" groupId="uk.ac.ed.card.wso2.template" version="1.5.4" type="synapse/sequenceTemplate" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/templates/CardExchange_OAuth2_SequenceTemplate.xml</file>
+    </artifact>
+    <artifact name="CardExchange_EnqueueIDMWrite_Sequence" groupId="uk.ac.ed.card.wso2.sequence" version="1.5.4" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/CardExchange_EnqueueIDMWrite_Sequence.xml</file>
+    </artifact>
+    <artifact name="CardExchange_EnqueueCardAPI_Sequence" groupId="uk.ac.ed.card.wso2.sequence" version="1.5.4" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/CardExchange_EnqueueCardAPI_Sequence.xml</file>
+    </artifact>
+    <artifact name="CardExchange_CardAPIRetry_MessageProcessor" groupId="uk.ac.ed.card.wso2.message-processors" version="1.5.4" type="synapse/message-processors" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-processors/CardExchange_CardAPIRetry_MessageProcessor.xml</file>
+    </artifact>
+    <artifact name="CardExchange_IDMWriteRetry_MessageProcessor" groupId="uk.ac.ed.card.wso2.message-processors" version="1.5.4" type="synapse/message-processors" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-processors/CardExchange_IDMWriteRetry_MessageProcessor.xml</file>
+    </artifact>
+	<artifact name="card_cardexchange_cardapi_proxy" groupId="uk.ac.ed.card.wso2.proxy-service" version="1.5.4" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+		<file>src/main/synapse-config/proxy-services/card_cardexchange_cardapi_proxy.xml</file>
+    </artifact>
+	<artifact name="card_cardexchange_idmwrite_proxy" groupId="uk.ac.ed.card.wso2.proxy-service" version="1.5.4" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+		<file>src/main/synapse-config/proxy-services/card_cardexchange_idmwrite_proxy.xml</file>
+    </artifact>
+</artifacts>

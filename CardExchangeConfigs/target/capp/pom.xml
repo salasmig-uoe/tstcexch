@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>uk.ac.ed.card.wso2</groupId>
+  <artifactId>CardExchangeConfigs_module</artifactId>
+  <version>1.5.4</version>
+  <packaging>pom</packaging>
+  <name>CardExchangeConfigs_module</name>
+  <description>CardExchangeConfigs_module</description>
+  <modules>
+    <module>artifacts/api/CardExchange_API</module>
+    <module>artifacts/metadata/CardExchange_API_swagger</module>
+    <module>artifacts/metadata/CardExchange_API_metadata</module>
+    <module>artifacts/endpoint/CardExchange_CardAPI_Endpoint</module>
+    <module>artifacts/endpoint/CardExchange_IDMWrite_Endpoint</module>
+    <module>artifacts/endpoint/card_cardexchange_cardapi_proxy_ep</module>
+    <module>artifacts/endpoint/card_cardexchange_idmwrite_proxy_ep</module>
+    <module>artifacts/sequence/CardExchange_Inbound_Sequence</module>
+    <module>artifacts/sequence/CardExchange_DefaultReply_Sequence</module>
+    <module>artifacts/sequence/CardExchange_DefaultFault_Sequence</module>
+    <module>artifacts/sequence/CardExchange_EnqueueIDMWrite_Sequence</module>
+    <module>artifacts/sequence/CardExchange_EnqueueCardAPI_Sequence</module>
+    <module>artifacts/message-store/card_cardexchange_cardapi_mq</module>
+    <module>artifacts/message-store/card_cardexchange_cardapi_mq_error</module>
+    <module>artifacts/message-store/card_cardexchange_cardapi_mq_retry</module>
+    <module>artifacts/message-store/card_cardexchange_idmwrite_mq</module>
+    <module>artifacts/message-store/card_cardexchange_idmwrite_mq_error</module>
+    <module>artifacts/message-store/card_cardexchange_idmwrite_mq_retry</module>
+    <module>artifacts/message-processors/CardExchange_CardAPI_MessageProcessor</module>
+    <module>artifacts/message-processors/CardExchange_IDMWrite_MessageProcessor</module>
+    <module>artifacts/message-processors/CardExchange_CardAPIRetry_MessageProcessor</module>
+    <module>artifacts/message-processors/CardExchange_IDMWriteRetry_MessageProcessor</module>
+    <module>artifacts/template/CardExchange_OAuth2_SequenceTemplate</module>
+    <module>artifacts/proxy-service/card_cardexchange_cardapi_proxy</module>
+    <module>artifacts/proxy-service/card_cardexchange_idmwrite_proxy</module>
+  </modules>
+  <distributionManagement>
+    <repository>
+      <id>release</id>
+      <name>Release Distribution Repository</name>
+      <url>https://example.com/nexus/repository</url>
+    </repository>
+  </distributionManagement>
+</project>

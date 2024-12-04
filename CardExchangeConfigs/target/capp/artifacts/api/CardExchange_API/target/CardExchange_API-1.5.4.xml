@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/card-exchange" name="CardExchange_API" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST" uri-template="/webhook">
+        <inSequence>
+            <sequence key="CardExchange_Inbound_Sequence"/>
+            <drop/>
+        </inSequence>
+        <outSequence>
+            <respond/>
+        </outSequence>
+        <faultSequence>
+            <log category="FATAL" description="Log validation failure" level="full">
+                <property name="CardExchange" value="Inbound failed: Message dropped"/>
+                <property expression="get-property('CARDEXCHANGE_ERROR')" name="CARDEXCHANGE_ERROR"/>
+                <property expression="get-property('ERROR_MESSAGE')" name="ERROR_MESSAGE"/>
+                <property expression="get-property('ERROR_DETAIL')" name="ERROR_DETAIL"/>
+            </log>
+        </faultSequence>
+    </resource>
+</api>

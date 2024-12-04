@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template name="CardExchange_OAuth2_SequenceTemplate" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter defaultValue="" isMandatory="false" name="failureStore"/>
+    <sequence>
+        <property expression="json-eval($)" name="origPayload" scope="default" type="STRING"/>
+        <payloadFactory media-type="xml">
+            <format>
+                <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+                    <soapenv:Body>
+                        <root xmlns="">
+                            <grant_type>client_credentials</grant_type>
+                        </root>
+                    </soapenv:Body>
+                </soapenv:Envelope>
+            </format>
+            <args/>
+        </payloadFactory>
+        <propertyGroup>
+            <property expression="get-property('env','OAUTH_TOKEN_ENDPOINT')" name="uri.var.oauthTokenEndpoint" scope="default" type="STRING"/>
+            <property expression="get-property('env','CARDEXCH_USERNAME')" name="appClientId" scope="default" type="STRING"/>
+            <property expression="wso2:vault-lookup('CARDEXCH_PASSWORD')" name="appClientSecret" scope="default" type="STRING"/>
+            <property expression="fn:concat($ctx:appClientId,':',$ctx:appClientSecret)" name="appCredentials" scope="default" type="STRING"/>
+            <property expression="base64Encode(get-property('appCredentials'))" name="appBasicAuth" scope="default" type="STRING"/>
+            <property action="remove" name="TRANSPORT_HEADERS" scope="axis2"/>
+            <property name="BLOCKING_SENDER_PRESERVE_REQ_HEADERS" scope="default" type="STRING" value="false"/>
+            <property name="REST_URL_POSTFIX" scope="axis2" type="STRING" value=""/>
+            <property name="DISABLE_CHUNKING" scope="axis2" type="STRING" value="true"/>
+            <property name="FORCE_SC_ACCEPTED" scope="axis2" type="STRING" value="false"/>
+            <property name="OUT_ONLY" scope="default" type="STRING" value="false"/>
+            <property name="messageType" scope="axis2" type="STRING" value="application/x-www-form-urlencoded"/>
+            <property name="ContentType" scope="axis2" type="STRING" value="application/x-www-form-urlencoded"/>
+            <property expression="fn:concat('Basic ', $ctx:appBasicAuth)" name="Authorization" scope="transport" type="STRING"/>
+        </propertyGroup>
+        <call blocking="true">
+            <endpoint name="token">
+                <http method="post" uri-template="{uri.var.oauthTokenEndpoint}">
+                    <suspendOnFailure>
+                        <initialDuration>-1</initialDuration>
+                        <progressionFactor>1</progressionFactor>
+                    </suspendOnFailure>
+                    <markForSuspension>
+                        <retriesBeforeSuspension>-1</retriesBeforeSuspension>
+                    </markForSuspension>
+                </http>
+            </endpoint>
+        </call>
+        <switch source="get-property('axis2','HTTP_SC')">
+            <case regex="200|201">
+                <property expression="json-eval($.access_token)" name="appOAuthToken" scope="default" type="STRING"/>
+                <payloadFactory media-type="json">
+                    <format>$1</format>
+                    <args>
+                        <arg evaluator="xml" expression="get-property('origPayload')"/>
+                    </args>
+                </payloadFactory>
+                <propertyGroup>
+                    <property action="remove" name="TRANSPORT_HEADERS" scope="axis2"/>
+                    <property name="DISABLE_CHUNKING" scope="axis2" type="STRING" value="true"/>
+                    <property name="FORCE_SC_ACCEPTED" scope="axis2" type="STRING" value="true"/>
+                    <property name="OUT_ONLY" scope="default" type="STRING" value="true"/>
+                    <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+                    <property name="ContentType" scope="axis2" type="STRING" value="application/json"/>
+                    <property name="Accept" scope="transport" type="STRING" value="application/json"/>
+                    <property expression="fn:concat('Bearer ', $ctx:appOAuthToken)" name="Authorization" scope="transport" type="STRING"/>
+                </propertyGroup>
+            </case>
+            <default>
+                <log category="ERROR" level="full">
+                    <property expression="fn:concat('OAuth token call failed with response code: ', $axis2:HTTP_SC)" name="CARD-EXCHANGE"/>
+                    <property expression="json-eval($)" name="CARD-EXCHANGE Token endpoint response"/>
+                </log>
+                <payloadFactory media-type="json">
+                    <format>$1</format>
+                    <args>
+                        <arg evaluator="xml" expression="get-property('origPayload')"/>
+                    </args>
+                </payloadFactory>
+                <store messageStore="{$func:failureStore}"/>
+                <drop/>
+            </default>
+        </switch>
+    </sequence>
+</template>

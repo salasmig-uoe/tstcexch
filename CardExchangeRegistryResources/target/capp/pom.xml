@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>uk.ac.ed.card.wso2</groupId>
+  <artifactId>CardExchangeRegistryResources_module</artifactId>
+  <version>1.5.4</version>
+  <packaging>pom</packaging>
+  <name>CardExchangeRegistryResources_module</name>
+  <description>CardExchangeRegistryResources_module</description>
+  <modules>
+    <module>artifacts/resource/cardexchange</module>
+    <module>artifacts/resource/cardexchange_inputSchema</module>
+    <module>artifacts/resource/cardexchange_outputSchema</module>
+  </modules>
+  <distributionManagement>
+    <repository>
+      <id>release</id>
+      <name>Release Distribution Repository</name>
+      <url>https://example.com/nexus/repository</url>
+    </repository>
+  </distributionManagement>
+</project>

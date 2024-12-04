@@ -1,0 +1,46 @@
+map_S_CardExchangePerson_S_ActiveCard = function() { 
+  var outputActiveCard={};
+
+  // Polyfill .find()
+  Array.prototype.find = Array.prototype.find || function(callback) {
+    if (this === null) {
+      throw new TypeError('Array.prototype.find called on null or undefined');
+    } else if (typeof callback !== 'function') {
+      throw new TypeError('callback must be a function');
+    }
+    var list = Object(this);
+    // Makes sures is always has an positive integer as length.
+    var length = list.length >>> 0;
+    var thisArg = arguments[1];
+    for (var i = 0; i < length; i++) {
+      var element = list[i];
+      if ( callback.call(thisArg, element, i, list) ) {
+        return element;
+      }
+    }
+  };
+  // End of polyfill.
+
+  function activeCard(cards) {
+    return cards.find(function(card) { return card.Status == 5 });
+  }
+
+  function parseCardholders(cardholders) {
+    return cardholders.map(function(cardholder) { return activeCard(cardholder.Cards) }).find(Boolean)
+  }
+
+
+  // Make sure we have at least got a valid person in the payload.
+  if (!inputCardExchangePerson || !inputCardExchangePerson.Person || !inputCardExchangePerson.Person.PersonNumber) {
+    throw new Error('CARDEXCHANGE: Invalid Person/PersonNumber in payload: ' + JSON.stringify(inputCardExchangePerson));
+  }
+  
+  activeCard = parseCardholders(inputCardExchangePerson.Person.Cardholders || []) || {};
+  outputActiveCard.edunicardnumber = activeCard.CardNumber || null;
+  outputActiveCard.edunicardserialnumber = activeCard.ChipserialNumber || null;
+  outputActiveCard.edunilibrarynumber = activeCard.PacsCardNumber || null;
+  outputActiveCard.person_id = inputCardExchangePerson.Person.PersonNumber;
+  outputActiveCard.photo = inputCardExchangePerson.Person.Photo;
+
+  return outputActiveCard;
+};

@@ -1,0 +1,14 @@
+openapi: 3.0.1
+info:
+  title: CardExchange_API
+  description: API Definition of CardExchange API
+  version: 1.0.0
+servers:
+- url: http://localhost:8290/card-exchange/webhook
+paths:
+  /:
+    x-wso2-disable-security: true
+    post:
+      responses:
+        default:
+          description: Default response

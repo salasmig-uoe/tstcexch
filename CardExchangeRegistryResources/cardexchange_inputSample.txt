@@ -1,0 +1,52 @@
+{
+    "Person": {
+        "PersonNumber": "1832195",
+        "Photo": "XXXXXXXXXXXXX",
+        "Cardholders": [
+            {
+                "Cards": [
+                    {
+                        "Status": 4,
+                        "CardNumber": "1001009004932495",
+                        "ChipserialNumber": "2634806637",
+                        "PacsCardNumber": "2015002123123123"
+		    },
+                    {
+                        "Status": 5,
+                        "CardNumber": "9991009004932495",
+                        "ChipserialNumber": "9994806637",
+                        "PacsCardNumber": "9995002123123123"
+		    },
+                    {
+                        "Status": 6,
+                        "CardNumber": "1001009004932495",
+                        "ChipserialNumber": "2634806637",
+                        "PacsCardNumber": "2015002123123123"
+		    }
+                ]
+            },
+            {
+                "Cards": [
+                    {
+                        "Status": 4,
+                        "CardNumber": "1001009004932495",
+                        "ChipserialNumber": "2634806637",
+                        "PacsCardNumber": "2015002123123123"
+		    },
+                    {
+                        "Status": 5,
+                        "CardNumber": "8881009004932495",
+                        "ChipserialNumber": "8884806637",
+                        "PacsCardNumber": "8885002123123123"
+		    },
+                    {
+                        "Status": 6,
+                        "CardNumber": "1001009004932495",
+                        "ChipserialNumber": "2634806637",
+                        "PacsCardNumber": "2015002123123123"
+		    }
+		    ]
+            }
+        ]
+    }
+}

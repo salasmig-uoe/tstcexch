@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>uk.ac.ed.card</groupId>
+  <artifactId>CardExchange</artifactId>
+  <version>1.5.4</version>
+  <packaging>pom</packaging>
+  <name>CardExchange</name>
+  <description>CardExchange</description>
+  <modules>
+    <module>CardExchangeAuthenticator</module>
+    <module>CardExchangeRegistryResources</module>
+    <module>CardExchangeConfigs</module>
+    <module>CardExchangeCompositeExporter</module>
+  </modules>
+  <scm>
+    <connection>scm:git:https://github.com/username/repository.git</connection>
+    <developerConnection>scm:git:https://github.com/username/repository.git</developerConnection>
+    <url>https://github.com/username/repository.git</url>
+  </scm>
+  <distributionManagement>
+    <repository>
+      <id>release</id>
+      <name>Release Distribution Repository</name>
+      <url>https://example.com/nexus/repository</url>
+    </repository>
+  </distributionManagement>
+  <properties>
+    <project.scm.id>integration-project</project.scm.id>
+    <dir>target</dir>
+  </properties>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-release-plugin</artifactId>
+        <version>3.0.0-M1</version>
+        <configuration />
+      </plugin>
+      <plugin>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <version>3.0.0-M1</version>
+        <configuration />
+      </plugin>
+      <plugin>
+        <artifactId>maven-eclipse-plugin</artifactId>
+        <version>2.9</version>
+        <configuration>
+          <projectnatures>
+            <projectnature>org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature</projectnature>
+          </projectnatures>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <profiles>
+    <profile>
+      <id>Solution</id>
+      <build />
+    </profile>
+    <profile>
+      <id>Docker</id>
+      <build />
+    </profile>
+    <profile>
+      <id>Kubernetes</id>
+      <build />
+    </profile>
+    <profile>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <build />
+    </profile>
+    <profile>
+      <id>config</id>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <version>3.1.0</version>
+            <executions>
+              <execution>
+                <id>artifacts_version</id>
+                <phase>validate</phase>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+                <configuration>
+                  <target>
+                    <replaceregexp byline="true">
+                      <regexp pattern="(?&lt;!xml) version=&quot;[^&quot;]+&quot;" />
+                      <substitution expression=" version=&quot;${project.version}&quot;" />
+                      <fileset dir=".">
+                        <include name="artifact.xml" />
+                      </fileset>
+                    </replaceregexp>
+                  </target>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+</project>

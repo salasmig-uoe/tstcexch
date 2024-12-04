@@ -1,0 +1,5 @@
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="disable_chunking_mult">
+    <property name="DISABLE_CHUNKING" value="true" type="STRING" scope="axis2"/>
+    <property name="FORCE_HTTP_CONTENT_LENGTH" value="true" type="STRING" scope="axis2"/>
+    <property name="COPY_CONTENT_LENGTH_FROM_INCOMING" value="true" type="STRING" scope="axis2"/>
+</sequence>

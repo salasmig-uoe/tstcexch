@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="card_cardexchange_cardapi_proxy" startOnLoad="true" transports="http https" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <log level="full"/>
+            <property expression="get-property('env','CARD_API_ENDPOINT')" name="uri.var.cardApiEndpoint" scope="default" type="STRING"/>
+            <property action="remove" name="REST_URL_POSTFIX" scope="axis2"/>
+            <property action="remove" name="TRANSPORT_HEADERS" scope="axis2"/>
+            <property name="messageType" scope="axis2" type="STRING" value="application/xml"/>
+            <payloadFactory media-type="xml">
+                <format>
+                    <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+                        <soapenv:Body>
+                            <jsonObject>
+                                <edunicardnumber>$1</edunicardnumber>
+                                <edunicardserialnumber>$2</edunicardserialnumber>
+                                <edunilibrarynumber>$3</edunilibrarynumber>
+                                <person_id>$4</person_id>
+                                <photo>$5</photo>
+                            </jsonObject>
+                        </soapenv:Body>
+                    </soapenv:Envelope>
+                </format>
+                <args>
+                    <arg value="1001009008504764"/>
+                    <arg value="3999111168"/>
+                    <arg value="20230456525882"/>
+                    <arg value="132064"/>
+                    <arg value="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"/>
+                </args>
+            </payloadFactory>
+            <!-- <property name="messageType" value="text/xml" scope="axis2"/>  -->
+            <log level="full"/>
+            <!-- Acknowledging storage operation completion -->
+            <property description="Generate 202 response from mediation flow" name="FORCE_SC_ACCEPTED" scope="axis2" type="STRING" value="true"/>
+            <!-- Sending original message to the error message store -->
+            <store messageStore="card_cardexchange_cardapi_mq_error"/>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence>
+            <respond/>
+        </faultSequence>
+    </target>
+</proxy>

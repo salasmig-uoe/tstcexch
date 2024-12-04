@@ -1,0 +1,2 @@
+[transport.local.sender.nonblocking]
+enable = true
