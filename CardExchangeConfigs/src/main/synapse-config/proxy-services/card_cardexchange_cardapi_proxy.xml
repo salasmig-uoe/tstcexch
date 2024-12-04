@@ -2,10 +2,22 @@
 <proxy name="card_cardexchange_cardapi_proxy" startOnLoad="true" transports="http https" xmlns="http://ws.apache.org/ns/synapse">
     <target>
         <inSequence>
-            <log level="full"/>
+            
             <property expression="get-property('env','CARD_API_ENDPOINT')" name="uri.var.cardApiEndpoint" scope="default" type="STRING"/>
+			<log level="full">
+				<property expression="get-property('env','CARD_API_ENDPOINT')" name="LOG-ENDPOINT-TO CALL"/>
+			</log>
             <property action="remove" name="REST_URL_POSTFIX" scope="axis2"/>
             <property action="remove" name="TRANSPORT_HEADERS" scope="axis2"/>
+			
+			<property name="FORCE_HTTP_1.0" value="true" scope="axis2"/>
+			<header name="api" action="remove"/>
+			<header name="Accept" action="remove"/>
+			<header name="Access-Control-Allow-Headers" action="remove"/>
+			<header name="Access-Control-Allow-Methods" action="remove"/>
+			<header name="Authorization" action="remove"/>
+			<header name="Content-Type" action="remove"/>
+		
             <property name="messageType" scope="axis2" type="STRING" value="application/xml"/>
             <payloadFactory media-type="xml">
                 <format>
