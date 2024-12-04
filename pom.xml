@@ -28,6 +28,7 @@
   </distributionManagement>
   <properties>
     <project.scm.id>integration-project</project.scm.id>
+	<project.runtime.version>4.3.0</project.runtime.version>
     <dir>target</dir>
   </properties>
   <build>

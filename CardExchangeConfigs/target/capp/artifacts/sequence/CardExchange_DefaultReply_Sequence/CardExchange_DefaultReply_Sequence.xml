@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<sequence name="CardExchange_DefaultReply_Sequence" statistics="enable" trace="enable" xmlns="http://ws.apache.org/ns/synapse">
-    <log level="custom">
-        <property name="LOG-DEFAULT-REPLY-SEQ" value="finalised"/>
-    </log>
-</sequence>
