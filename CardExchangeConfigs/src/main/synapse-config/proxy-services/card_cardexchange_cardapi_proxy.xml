@@ -11,12 +11,12 @@
             <property action="remove" name="TRANSPORT_HEADERS" scope="axis2"/>
 			
 			<property name="FORCE_HTTP_1.0" value="true" scope="axis2"/>
-			<header name="api" action="remove"/>
-			<header name="Accept" action="remove"/>
-			<header name="Access-Control-Allow-Headers" action="remove"/>
-			<header name="Access-Control-Allow-Methods" action="remove"/>
-			<header name="Authorization" action="remove"/>
-			<header name="Content-Type" action="remove"/>
+			<header name="api" action="remove" scope="axis2"/>
+			<header name="Accept" action="remove" scope="axis2"/>
+			<header name="Access-Control-Allow-Headers" action="remove" scope="axis2"/>
+			<header name="Access-Control-Allow-Methods" action="remove" scope="axis2"/>
+			<header name="Authorization" action="remove" scope="axis2"/>
+			<header name="Content-Type" action="remove" scope="axis2"/>
 		
             <property name="messageType" scope="axis2" type="STRING" value="application/xml"/>
             <payloadFactory media-type="xml">
