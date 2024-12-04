@@ -33,6 +33,8 @@
             <log level="full"/>
             <!-- Acknowledging storage operation completion -->
             <property description="Generate 202 response from mediation flow" name="FORCE_SC_ACCEPTED" scope="axis2" type="STRING" value="true"/>
+			<property name="FORCE_SC_ACCEPTED" value="true" scope="axis2" type="STRING"></property>
+            <property name="OUT_ONLY" value="true" scope="default" type="STRING"></property>
             <!-- Sending original message to the error message store -->
             <store messageStore="card_cardexchange_cardapi_mq_error"/>
         </inSequence>
